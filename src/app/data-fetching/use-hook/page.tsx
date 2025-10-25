@@ -12,9 +12,6 @@ interface UserResponse{
 function getUsers():Promise<UserResponse>{
     return fetch('https://dummyjson.com/users').then(res=>res.json())
 }
-
-
-
 function UseHookExample(){
     const usersPromise = getUsers()
     return(

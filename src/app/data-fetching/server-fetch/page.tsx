@@ -1,3 +1,6 @@
+
+
+
 interface Product{
     id:number;
     title:string;
@@ -10,7 +13,12 @@ interface ProductResponse{
     total:number
 }
 async function getProducts():Promise<ProductResponse>{
-    const response =  await fetch('https://dummyjson.com/products')
+    const response =  await fetch('https://dummyjson.com/products',{
+        // cache:'no-store' //no-store will never cache ur response, always going to fetch fresh response
+        // cache:'force-cache'
+        cache:'reload' // fetches fresh response, update the cache
+        //this u can use based on yor requirement
+    })
     if(!response.ok){
         throw new Error('aFailed to fetch products')
     }
